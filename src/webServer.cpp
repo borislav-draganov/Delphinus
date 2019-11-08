@@ -1,4 +1,5 @@
 #include "webServer.h"
+#include "dallas.h"
 
 ESP8266WebServer server(80);
 

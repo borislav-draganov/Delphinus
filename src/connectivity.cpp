@@ -61,11 +61,11 @@ void startAsAccessPoint() {
     Serial.print("Setting soft-AP configuration... ");
     Serial.println(WiFi.softAPConfig(localIp, gateway, subnet) ? "Ready" : "Failed!");
 
-    WiFi.hostname(apSsid);
+    // WiFi.hostname(apSsid);
 
     Serial.print("Setting soft-AP... ");
     Serial.println(WiFi.softAP(apSsid, apPassword) ? "Ready" : "Failed!");
 
-    MDNS.begin(apSsid);
-    MDNS.addService("http", "tcp", 80);
+    // MDNS.begin(apSsid);
+    // MDNS.addService("http", "tcp", 80);
 }

@@ -1,8 +1,7 @@
 #include <Arduino.h>
 
-#include "connectivity.h"
 #include "webServer.h"
-#include "dallas.h"
+#include "connectivity.h"
 
 void setup() {
   Serial.begin(115200);
@@ -13,9 +12,5 @@ void setup() {
 }
 
 void loop() {
-  // getTemperature();
-
   handleClient(); 
-
-  // delay(5000);
 }
