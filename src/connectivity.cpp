@@ -12,8 +12,8 @@ void startWiFiConnection() {
     WiFi.softAPdisconnect();
     WiFi.disconnect();
 
-    Serial.print("WiFi config loading...");
-    bool isWiFiConfigSet = readWiFiConfig();
+    Serial.println("WiFi config loading...");
+    bool isWiFiConfigSet = loadWiFiConfig();
 
     if (isWiFiConfigSet) {
         attemptToConnect();
@@ -27,10 +27,6 @@ void attemptToConnect() {
     
     String ssid = getSsid();
     String password = getPassword();
-    Serial.print("SSID: ");
-    Serial.println(ssid);
-    Serial.print("Password: ");
-    Serial.println(password);
 
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
@@ -42,7 +38,7 @@ void attemptToConnect() {
 
         unsigned long now = millis();
 
-        if ((now - startTime) >= 5000 || WiFi.status() == WL_CONNECTED) {
+        if ((now - startTime) >= 15000 || WiFi.status() == WL_CONNECTED) {
             break;
         }
     } 
@@ -61,11 +57,6 @@ void startAsAccessPoint() {
     Serial.print("Setting soft-AP configuration... ");
     Serial.println(WiFi.softAPConfig(localIp, gateway, subnet) ? "Ready" : "Failed!");
 
-    // WiFi.hostname(apSsid);
-
     Serial.print("Setting soft-AP... ");
     Serial.println(WiFi.softAP(apSsid, apPassword) ? "Ready" : "Failed!");
-
-    // MDNS.begin(apSsid);
-    // MDNS.addService("http", "tcp", 80);
 }

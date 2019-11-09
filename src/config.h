@@ -1,7 +1,9 @@
 #include <FS.h>
 #include <ArduinoJson.h>
 
-bool readWiFiConfig();
+bool loadWiFiConfig();
+
+void saveWifiConfig(String ssid, String password);
 
 String getSsid();
 
