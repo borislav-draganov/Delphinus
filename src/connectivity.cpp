@@ -1,5 +1,4 @@
 #include "connectivity.h"
-#include "config.h"
 
 String apSsid = "Delphinus";
 String apPassword = "123456789";
@@ -12,7 +11,7 @@ void startWiFiConnection() {
     WiFi.softAPdisconnect();
     WiFi.disconnect();
 
-    Serial.println("WiFi config loading...");
+    Serial.println("WiFi Config loading...");
     bool isWiFiConfigSet = loadWiFiConfig();
 
     if (isWiFiConfigSet) {
