@@ -1,7 +1,10 @@
-#include <ESP8266WebServer.h>
+#include <ESPAsyncWebServer.h>
+#include <ESPAsyncTCP.h>
+#include <ArduinoJson.h>
+#include <AsyncJson.h>
+
+#include "config.h"
+#include "connectivity.h"
+#include "dallas.h"
 
 void startWebServer();
-
-void handleClient();
-
-void handleRoot();
