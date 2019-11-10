@@ -1,3 +1,6 @@
+#ifndef DALLAS_H
+#define DALLAS_H
+
 #include <ArduinoJson.h>
 #include <DallasTemperature.h>
 
@@ -9,3 +12,5 @@
 StaticJsonDocument<128> getAllTemperaturesAsJson();
 
 float getTemperature(DallasTemperature sensor);
+
+#endif

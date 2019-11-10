@@ -1,4 +1,6 @@
-#include <FS.h>
+#ifndef CONFIG_H
+#define CONFIG_H
+
 #include <ArduinoJson.h>
 
 bool loadWiFiConfig();
@@ -14,3 +16,5 @@ bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
 String getSsid();
 
 String getPassword();
+
+#endif

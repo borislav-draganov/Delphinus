@@ -1,6 +1,6 @@
-#include <OneWire.h>
-
 #include "dallas.h"
+
+#include <OneWire.h>
 
 OneWire oneWireRedSensor(RED_SENSOR);
 DallasTemperature dsRedSensor(&oneWireRedSensor);

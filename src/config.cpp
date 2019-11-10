@@ -1,5 +1,7 @@
 #include "config.h"
 
+#include <FS.h>
+
 const String wifiConfigFile     = "/wifi.json";
 const String sensorConfigFile   = "/sensors.json";
 

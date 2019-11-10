@@ -1,9 +1,10 @@
-#include <ESP8266WiFi.h>
-
-#include "config.h"
+#ifndef CONNECTIVITY_H
+#define CONNECTIVITY_H
 
 void startWiFiConnection();
 
 void attemptToConnect();
 
 void startAsAccessPoint();
+
+#endif

@@ -1,5 +1,9 @@
 #include "connectivity.h"
 
+#include <ESP8266WiFi.h>
+
+#include "config.h"
+
 String apSsid = "Delphinus";
 String apPassword = "123456789";
 
