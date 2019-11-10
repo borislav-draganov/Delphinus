@@ -5,6 +5,12 @@ bool loadWiFiConfig();
 
 void saveWifiConfig(String ssid, String password);
 
+void initSensorConfig();
+
+void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, int updateInterval);
+
+bool saveJsonToConFigFile(String fileName, StaticJsonDocument<128> json);
+
 String getSsid();
 
 String getPassword();

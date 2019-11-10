@@ -9,6 +9,8 @@ void setup() {
 
   SPIFFS.begin();
 
+  initSensorConfig();
+
   startWebServer();
 
   startWiFiConnection();
