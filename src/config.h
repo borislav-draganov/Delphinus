@@ -9,7 +9,7 @@ void initSensorConfig();
 
 void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, int updateInterval);
 
-bool saveJsonToConFigFile(String fileName, StaticJsonDocument<128> json);
+bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
 
 String getSsid();
 

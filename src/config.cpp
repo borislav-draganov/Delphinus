@@ -47,7 +47,7 @@ void saveWifiConfig(String ssid, String password) {
     doc["ssid"] = ssid;
     doc["password"] = password;
 
-    saveJsonToConFigFile(wifiConfigFile, doc);
+    saveJsonToConfigFile(wifiConfigFile, doc);
 }
 
 void initSensorConfig() {
@@ -61,7 +61,7 @@ void initSensorConfig() {
         doc["greenSensorName"] = defaultGreenSensorName;
         doc["updateInterval"] = defaultUpdateInterval;
 
-        saveJsonToConFigFile(sensorConfigFile, doc);
+        saveJsonToConfigFile(sensorConfigFile, doc);
     } else {
         Serial.println("Sensor config already set");
     }
@@ -75,10 +75,10 @@ void saveSensorConfig(String redSensorName, String yellowSensorName, String blue
     doc["greenSensorName"] = greenSensorName;
     doc["updateInterval"] = updateInterval;
 
-    saveJsonToConFigFile(sensorConfigFile, doc);
+    saveJsonToConfigFile(sensorConfigFile, doc);
 }
 
-bool saveJsonToConFigFile(String fileName, StaticJsonDocument<128> doc) {
+bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> doc) {
     File configFile = SPIFFS.open(fileName, "w");
     if (!configFile) {
         Serial.println("Error opening file for writing");
