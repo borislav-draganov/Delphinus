@@ -1,10 +1,31 @@
+#include <OneWire.h>
+
 #include "dallas.h"
 
-OneWire oneWireFirstSensor(FIRST_SENSOR);
-DallasTemperature dsFirstSensor(&oneWireFirstSensor);
+OneWire oneWireRedSensor(RED_SENSOR);
+DallasTemperature dsRedSensor(&oneWireRedSensor);
 
-void getTemperature() {
-  dsFirstSensor.requestTemperatures();
+OneWire oneWireYellowSensor(YELLOW_SENSOR);
+DallasTemperature dsYellowSensor(&oneWireYellowSensor);
 
-  Serial.println(dsFirstSensor.getTempCByIndex(0));
+OneWire oneWireBlueSensor(BLUE_SENSOR);
+DallasTemperature dsBlueSensor(&oneWireBlueSensor);
+
+OneWire oneWireGreenSensor(GREEN_SENSOR);
+DallasTemperature dsGreenSensor(&oneWireGreenSensor);
+
+StaticJsonDocument<128> getAllTemperaturesAsJson() {
+  StaticJsonDocument<128> doc;
+  doc["redSensor"] = getTemperature(dsRedSensor);
+  doc["yellowSensor"] = getTemperature(dsYellowSensor);
+  doc["blueSensor"] = getTemperature(dsBlueSensor);
+  doc["greenSensor"] = getTemperature(dsGreenSensor);
+
+  return doc;
+}
+
+float getTemperature(DallasTemperature sensor) {
+  sensor.requestTemperatures();
+
+  return sensor.getTempCByIndex(0);
 }
