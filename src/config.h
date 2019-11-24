@@ -18,8 +18,6 @@ class Configuration {
        String getPassword();
 
     private:
-        bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
-
         String wifiConfigFile             = "/wifi.json";
         String sensorConfigFile           = "/sensors.json";
         String defaultRedSensorName       = "Red";
@@ -29,6 +27,8 @@ class Configuration {
 
         String ssid;
         String password;
+
+        bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
 };
 
 extern Configuration Config;
