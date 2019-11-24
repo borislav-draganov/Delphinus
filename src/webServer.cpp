@@ -357,7 +357,7 @@ void RestWebServer::start() {
 
         request->send(200, "application/json", "{\"status\" : \"ok\"}");
 
-        WifiConnection.start();
+        WebServer.shouldRestartConnection = true;
     });
 
     server.on("/config/sensors", HTTP_GET, [](AsyncWebServerRequest *request) {

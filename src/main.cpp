@@ -18,4 +18,9 @@ void setup() {
 }
 
 void loop() {
+  if (WebServer.shouldRestartConnection) {
+    WifiConnection.start();
+
+    WebServer.shouldRestartConnection = false;
+  }
 }

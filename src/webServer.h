@@ -3,6 +3,8 @@
 
 class RestWebServer {
     public:
+        bool shouldRestartConnection = false;
+
         void start();
 };
 
