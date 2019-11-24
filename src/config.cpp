@@ -9,7 +9,6 @@ const String defaultRedSensorName       = "Red";
 const String defaultYellowSensorName    = "Yellow";
 const String defaultBlueSensorName      = "Blue";
 const String defaultGreenSensorName     = "Green";
-const int defaultUpdateInterval         = 300000;
 
 String ssid;
 String password;
@@ -61,7 +60,6 @@ void initSensorConfig() {
         doc["yellowSensorName"] = defaultYellowSensorName;
         doc["blueSensorName"] = defaultBlueSensorName;
         doc["greenSensorName"] = defaultGreenSensorName;
-        doc["updateInterval"] = defaultUpdateInterval;
 
         saveJsonToConfigFile(sensorConfigFile, doc);
     } else {
@@ -69,13 +67,12 @@ void initSensorConfig() {
     }
 }
 
-void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, int updateInterval) {
+void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName) {
     StaticJsonDocument<128> doc;
     doc["redSensorName"] = redSensorName;
     doc["yellowSensorName"] = yellowSensorName;
     doc["blueSensorName"] = blueSensorName;
     doc["greenSensorName"] = greenSensorName;
-    doc["updateInterval"] = updateInterval;
 
     saveJsonToConfigFile(sensorConfigFile, doc);
 }

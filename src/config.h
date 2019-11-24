@@ -9,7 +9,7 @@ void saveWifiConfig(String ssid, String password);
 
 void initSensorConfig();
 
-void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, int updateInterval);
+void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName);
 
 bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
 

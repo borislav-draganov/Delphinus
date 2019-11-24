@@ -375,9 +375,8 @@ void startWebServer() {
         String yellowSensorName = jsonObj["yellowSensorName"].as<String>();
         String blueSensorName = jsonObj["blueSensorName"].as<String>();
         String greenSensorName = jsonObj["greenSensorName"].as<String>();
-        int updateInterval = jsonObj["updateInterval"].as<int>();
 
-        saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName, updateInterval);
+        saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName);
 
         request->send(200, "application/json", "{\"status\" : \"ok\"}");
     });
