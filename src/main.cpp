@@ -2,7 +2,7 @@
 #include <FS.h>
 
 #include "config.h"
-#include "connectivity.h"
+#include "connection.h"
 #include "webServer.h"
 
 void setup() {
@@ -10,11 +10,11 @@ void setup() {
 
   SPIFFS.begin();
 
-  initSensorConfig();
+  Config.initSensorConfig();
 
-  startWebServer();
+  WebServer.start();
 
-  startWiFiConnection();
+  WifiConnection.start();
 }
 
 void loop() {

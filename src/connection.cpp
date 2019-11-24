@@ -1,22 +1,19 @@
-#include "connectivity.h"
+#include "connection.h"
 
 #include <ESP8266WiFi.h>
 
 #include "config.h"
 
-String apSsid = "Delphinus";
-String apPassword = "123456789";
-
 IPAddress localIp(192,168,1,1);
 IPAddress gateway(192,168,1,1);
 IPAddress subnet(255,255,255,0);
 
-void startWiFiConnection() {
+void Connection::start() {
     WiFi.softAPdisconnect();
     WiFi.disconnect();
 
     Serial.println("WiFi Config loading...");
-    bool isWiFiConfigSet = loadWiFiConfig();
+    bool isWiFiConfigSet = Config.loadWiFiConfig();
 
     if (isWiFiConfigSet) {
         attemptToConnect();
@@ -25,11 +22,11 @@ void startWiFiConnection() {
     }
 }
 
-void attemptToConnect() {
+void Connection::attemptToConnect() {
     Serial.println("Starting in Station mode");
     
-    String ssid = getSsid();
-    String password = getPassword();
+    String ssid = Config.getSsid();
+    String password = Config.getPassword();
 
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
@@ -53,7 +50,7 @@ void attemptToConnect() {
     }
 }
 
-void startAsAccessPoint() {
+void Connection::startAsAccessPoint() {
     Serial.println("Starting in AP mode");
     WiFi.mode(WIFI_AP);
 
@@ -63,3 +60,5 @@ void startAsAccessPoint() {
     Serial.print("Setting soft-AP... ");
     Serial.println(WiFi.softAP(apSsid, apPassword) ? "Ready" : "Failed!");
 }
+
+Connection WifiConnection;

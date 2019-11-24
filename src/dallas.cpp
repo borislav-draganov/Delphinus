@@ -14,7 +14,7 @@ DallasTemperature dsBlueSensor(&oneWireBlueSensor);
 OneWire oneWireGreenSensor(GREEN_SENSOR);
 DallasTemperature dsGreenSensor(&oneWireGreenSensor);
 
-StaticJsonDocument<128> getAllTemperaturesAsJson() {
+StaticJsonDocument<128> DallasSensors::getAllTemperaturesAsJson() {
   StaticJsonDocument<128> doc;
   doc["redSensor"] = getTemperature(dsRedSensor);
   doc["yellowSensor"] = getTemperature(dsYellowSensor);
@@ -24,8 +24,10 @@ StaticJsonDocument<128> getAllTemperaturesAsJson() {
   return doc;
 }
 
-float getTemperature(DallasTemperature sensor) {
+float DallasSensors::getTemperature(DallasTemperature sensor) {
   sensor.requestTemperatures();
 
   return sensor.getTempCByIndex(0);
 }
+
+DallasSensors Dallas;

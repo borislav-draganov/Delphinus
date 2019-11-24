@@ -6,7 +6,7 @@
 #include <AsyncJson.h>
 
 #include "config.h"
-#include "connectivity.h"
+#include "connection.h"
 #include "dallas.h"
 
 AsyncWebServer server(80);
@@ -325,7 +325,7 @@ char webpage[] PROGMEM = R"=====(
 </html>
 )=====";
 
-void startWebServer() {
+void RestWebServer::start() {
     Serial.println("Starting web server");
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -337,7 +337,7 @@ void startWebServer() {
     server.on("/sensors", HTTP_GET, [](AsyncWebServerRequest *request) {
         Serial.println("GET /sensors");
 
-        StaticJsonDocument<128> doc = getAllTemperaturesAsJson();
+        StaticJsonDocument<128> doc = Dallas.getAllTemperaturesAsJson();
 
         AsyncResponseStream *response = request->beginResponseStream("application/json");
         serializeJson(doc, *response);
@@ -353,11 +353,11 @@ void startWebServer() {
         String ssid = jsonObj["ssid"].as<String>();
         String password = jsonObj["password"].as<String>();
 
-        saveWifiConfig(ssid, password);
+        Config.saveWifiConfig(ssid, password);
 
         request->send(200, "application/json", "{\"status\" : \"ok\"}");
 
-        startWiFiConnection();
+        WifiConnection.start();
     });
 
     server.on("/config/sensors", HTTP_GET, [](AsyncWebServerRequest *request) {
@@ -376,7 +376,7 @@ void startWebServer() {
         String blueSensorName = jsonObj["blueSensorName"].as<String>();
         String greenSensorName = jsonObj["greenSensorName"].as<String>();
 
-        saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName);
+        Config.saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName);
 
         request->send(200, "application/json", "{\"status\" : \"ok\"}");
     });
@@ -386,3 +386,5 @@ void startWebServer() {
 
     server.begin();
 }
+
+RestWebServer WebServer;

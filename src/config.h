@@ -3,18 +3,34 @@
 
 #include <ArduinoJson.h>
 
-bool loadWiFiConfig();
+class Configuration {
+    public:
+       bool loadWiFiConfig();
 
-void saveWifiConfig(String ssid, String password);
+       void saveWifiConfig(String ssid, String password);
 
-void initSensorConfig();
+       void initSensorConfig();
 
-void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName);
+       void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName);
 
-bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
+       String getSsid();
 
-String getSsid();
+       String getPassword();
 
-String getPassword();
+    private:
+        bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> json);
+
+        String wifiConfigFile             = "/wifi.json";
+        String sensorConfigFile           = "/sensors.json";
+        String defaultRedSensorName       = "Red";
+        String defaultYellowSensorName    = "Yellow";
+        String defaultBlueSensorName      = "Blue";
+        String defaultGreenSensorName     = "Green";
+
+        String ssid;
+        String password;
+};
+
+extern Configuration Config;
 
 #endif

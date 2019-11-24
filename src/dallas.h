@@ -9,8 +9,13 @@
 #define BLUE_SENSOR D5
 #define GREEN_SENSOR D6
 
-StaticJsonDocument<128> getAllTemperaturesAsJson();
+class DallasSensors {
+    public:
+        StaticJsonDocument<128> getAllTemperaturesAsJson();
 
-float getTemperature(DallasTemperature sensor);
+        float getTemperature(DallasTemperature sensor);
+};
+
+extern DallasSensors Dallas;
 
 #endif

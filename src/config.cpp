@@ -2,18 +2,7 @@
 
 #include <FS.h>
 
-const String wifiConfigFile     = "/wifi.json";
-const String sensorConfigFile   = "/sensors.json";
-
-const String defaultRedSensorName       = "Red";
-const String defaultYellowSensorName    = "Yellow";
-const String defaultBlueSensorName      = "Blue";
-const String defaultGreenSensorName     = "Green";
-
-String ssid;
-String password;
-
-bool loadWiFiConfig() {
+bool Configuration::loadWiFiConfig() {
     Serial.println("Reading WiFi Config");
 
     if (SPIFFS.exists(wifiConfigFile)) {
@@ -43,7 +32,7 @@ bool loadWiFiConfig() {
     }
 }
 
-void saveWifiConfig(String ssid, String password) {
+void Configuration::saveWifiConfig(String ssid, String password) {
     StaticJsonDocument<128> doc;
     doc["ssid"] = ssid;
     doc["password"] = password;
@@ -51,7 +40,7 @@ void saveWifiConfig(String ssid, String password) {
     saveJsonToConfigFile(wifiConfigFile, doc);
 }
 
-void initSensorConfig() {
+void Configuration::initSensorConfig() {
     if (!SPIFFS.exists(sensorConfigFile)) {
         Serial.println("Init default sensor config");
 
@@ -67,7 +56,7 @@ void initSensorConfig() {
     }
 }
 
-void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName) {
+void Configuration::saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName) {
     StaticJsonDocument<128> doc;
     doc["redSensorName"] = redSensorName;
     doc["yellowSensorName"] = yellowSensorName;
@@ -77,7 +66,7 @@ void saveSensorConfig(String redSensorName, String yellowSensorName, String blue
     saveJsonToConfigFile(sensorConfigFile, doc);
 }
 
-bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> doc) {
+bool Configuration::saveJsonToConfigFile(String fileName, StaticJsonDocument<128> doc) {
     File configFile = SPIFFS.open(fileName, "w");
     if (!configFile) {
         Serial.println("Error opening file for writing");
@@ -95,10 +84,12 @@ bool saveJsonToConfigFile(String fileName, StaticJsonDocument<128> doc) {
     return true;
 }
 
-String getSsid() {
+String Configuration::getSsid() {
     return ssid;
 }
 
-String getPassword() {
+String Configuration::getPassword() {
     return password;
 }
+
+Configuration Config;
