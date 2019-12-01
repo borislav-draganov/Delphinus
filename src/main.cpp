@@ -10,8 +10,6 @@ void setup() {
 
   SPIFFS.begin();
 
-  Config.initSensorConfig();
-
   WebServer.start();
 
   WifiConnection.start();

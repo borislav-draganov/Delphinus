@@ -9,8 +9,6 @@ class Configuration {
 
        void saveWifiConfig(String ssid, String password);
 
-       void initSensorConfig();
-
        void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName);
 
        String getSsid();
@@ -20,10 +18,6 @@ class Configuration {
     private:
         String wifiConfigFile             = "/wifi.json";
         String sensorConfigFile           = "/sensors.json";
-        String defaultRedSensorName       = "Red";
-        String defaultYellowSensorName    = "Yellow";
-        String defaultBlueSensorName      = "Blue";
-        String defaultGreenSensorName     = "Green";
 
         String ssid;
         String password;

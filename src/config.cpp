@@ -40,22 +40,6 @@ void Configuration::saveWifiConfig(String ssid, String password) {
     saveJsonToConfigFile(wifiConfigFile, doc);
 }
 
-void Configuration::initSensorConfig() {
-    if (!SPIFFS.exists(sensorConfigFile)) {
-        Serial.println("Init default sensor config");
-
-        StaticJsonDocument<128> doc;
-        doc["redSensorName"] = defaultRedSensorName;
-        doc["yellowSensorName"] = defaultYellowSensorName;
-        doc["blueSensorName"] = defaultBlueSensorName;
-        doc["greenSensorName"] = defaultGreenSensorName;
-
-        saveJsonToConfigFile(sensorConfigFile, doc);
-    } else {
-        Serial.println("Sensor config already set");
-    }
-}
-
 void Configuration::saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName) {
     StaticJsonDocument<128> doc;
     doc["redSensorName"] = redSensorName;
