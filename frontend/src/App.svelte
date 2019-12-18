@@ -106,7 +106,7 @@
 
 	const getSensorData = async() => {
 		if (isDev) {
-			return JSON.parse(`{"redSensor":22.3125,"yellowSensor":-127,"blueSensor":-127,"greenSensor":-127}`);
+			return JSON.parse(`{"redSensor":21.5625,"yellowSensor":21.4375,"blueSensor":21.3125,"greenSensor":21}`);
 		}
 
 		const response = await fetch('/sensors', {
@@ -138,10 +138,10 @@
 
 		const [red, yellow, blue, green] = sensors;
 
-		red.value = redSensor;
-		yellow.value = yellowSensor;
-		blue.value = blueSensor;
-		green.value = greenSensor;
+		red.value = redSensor.toFixed(2);
+		yellow.value = yellowSensor.toFixed(2);
+		blue.value = blueSensor.toFixed(2);
+		green.value = greenSensor.toFixed(2);
 
 		sensors = sensors;
 	};
@@ -209,6 +209,6 @@
 
 		refreshSensorData();
 
-		setInterval(refreshSensorData, 5000);
+		setInterval(refreshSensorData, 2000);
 	})();
 </script>
