@@ -1,6 +1,9 @@
 {
-  "name": "svelte-app",
+  "name": "delphinus-frontend",
+  "description": "Delphinus' Frontend",
   "version": "1.0.0",
+  "author": "Borislav Draganov",
+  "license": "GPLv3",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
