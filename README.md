@@ -34,3 +34,6 @@ platformio run --target upload
 ```bash
 platformio run --target uploadfs
 ```
+
+## Useful things
+* [Case](https://www.thingiverse.com/thing:4056195)
