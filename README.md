@@ -12,14 +12,6 @@ A D1 mini was used for this project.
 - Have the ability to set a SSID and password of a network to which the ESP will try to connect. If it can't, it falls back to AP mode
 - Have the ability to rename the sensors on the web page
 
-## Used libraries
-- DallasTemperature v3.8.0
-- OneWire v2.3.5
-- ESP Async WebServer v1.2.3
-- ESPAsyncTCP v1.2.2
-- AsyncTCP v1.1.1
-- ArduinoJson v6.13.0
-
 ## How to build
 0. *(Optional)* Build the frontend - check intructions in `frontend` folder
 
