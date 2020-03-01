@@ -27,7 +27,9 @@ StaticJsonDocument<128> DallasSensors::getAllTemperaturesAsJson() {
 float DallasSensors::getTemperature(DallasTemperature sensor) {
   sensor.requestTemperatures();
 
-  return sensor.getTempCByIndex(0);
+  float temp = sensor.getTempCByIndex(0);
+
+  return (temp * 100.0) / 100.0; 
 }
 
 DallasSensors Dallas;
