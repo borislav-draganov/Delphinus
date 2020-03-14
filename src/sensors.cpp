@@ -1,6 +1,7 @@
 #include "sensors.h"
 
 #include "dallas.h"
+#include "ctClamp.h"
 
 StaticJsonDocument<128> SensorsHub::getAllSensorDataAsJSON() {
   StaticJsonDocument<128> doc;
@@ -8,7 +9,7 @@ StaticJsonDocument<128> SensorsHub::getAllSensorDataAsJSON() {
   doc["yellowSensor"] = Dallas.getYellowSensorTemperature();
   doc["blueSensor"] = Dallas.getBlueSensorTemperature();
   doc["greenSensor"] = Dallas.getGreenSensorTemperature();
-  doc["powerSensor"] = 0;
+  doc["powerSensor"] = CTClamp.getApparentPower();
 
   return doc;
 }

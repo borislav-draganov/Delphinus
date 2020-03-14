@@ -2,6 +2,7 @@
 
 ## Overview
 A simple web server running on an ESP8266 displaying the readings from 4 temperature sensors, specifically DS18B20 sensors.
+Additionally added a CT Clamp sensor to measure the Amps - YHDC SCT013 20A version.
 
 A D1 mini was used for this project.
 
