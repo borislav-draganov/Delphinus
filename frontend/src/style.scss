@@ -2,6 +2,7 @@ $red-color: #d11a02;
 $yellow-color: #f2ee0f;
 $blue-color: #2637ed;
 $green-color: #1eba06;
+$black-color: #000000;
 
 .main-container {
     min-height: calc(100vh - 68px);
@@ -32,6 +33,10 @@ $green-color: #1eba06;
         color: $green-color;
     }
 
+    .black-color {
+        color: $black-color;
+    }
+
     .circle {
         display: inline-block;
         width: 15px;
@@ -56,6 +61,10 @@ $green-color: #1eba06;
         background-color: $green-color;
     }
 
+    .black-bg {
+        background-color: $black-color;
+    }
+
     .red-underline {
         border-bottom: 1px solid $red-color;
     }
@@ -70,6 +79,10 @@ $green-color: #1eba06;
 
     .green-underline {
         border-bottom: 1px solid $green-color;
+    }
+
+    .black-underline {
+        border-bottom: 1px solid $black-color;
     }
 
     .capitalize {

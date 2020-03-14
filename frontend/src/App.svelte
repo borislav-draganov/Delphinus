@@ -12,7 +12,7 @@
 						{sensor.name}
 					</span>
 
-					<span class="mdl-list__item-secondary-content">{sensor.value}</span>
+					<span class="mdl-list__item-secondary-content">{sensor.value} {sensor.unitSign}</span>
 				</li>
 			{/each}
 		</ul>
@@ -72,23 +72,33 @@
 
 <script>
 	const sensorConfigEndpoint = '/config/sensors';
+	const temperatureSign = '°C';
 
 	const sensors = [{
 		name: 'Red',
 		color: 'red',
 		value: 0,
+		unitSign: temperatureSign,
 	}, {
 		name: 'Yellow',
 		color: 'yellow',
 		value: 0,
+		unitSign: temperatureSign,
 	}, {
 		name: 'Blue',
 		color: 'blue',
 		value: 0,
+		unitSign: temperatureSign,
 	}, {
 		name: 'Green',
 		color: 'green',
 		value: 0,
+		unitSign: temperatureSign,
+	}, {
+		name: 'Power',
+		color: 'black',
+		value: 0,
+		unitSign: 'A',
 	}];
 
 	let ssid = '';  
@@ -106,7 +116,7 @@
 
 	const getSensorData = async() => {
 		if (isDev) {
-			return JSON.parse(`{"redSensor":21.5625,"yellowSensor":21.4375,"blueSensor":21.3125,"greenSensor":21}`);
+			return {"redSensor":21.5625,"yellowSensor":21.4375,"blueSensor":21.3125,"greenSensor":21,"powerSensor": 1.3};
 		}
 
 		const response = await fetch('/sensors', {
@@ -118,7 +128,7 @@
 
 	const getSensorConfig = async () => {
 		if (isDev) {
-			return JSON.parse(`{"redSensorName":"Red","yellowSensorName":"Yellow","blueSensorName":"Blue","greenSensorName":"Green"}`);
+			return {"redSensorName":"Red","yellowSensorName":"Yellow","blueSensorName":"Blue","greenSensorName":"Green","powerSensor":"Power"};
 		}
 
 		const response = await fetch(sensorConfigEndpoint, {
@@ -134,14 +144,16 @@
 			yellowSensor,
 			blueSensor,
 			greenSensor,
+			powerSensor,
 		} = await getSensorData();
 
-		const [red, yellow, blue, green] = sensors;
+		const [red, yellow, blue, green, power] = sensors;
 
 		red.value = redSensor.toFixed(2);
 		yellow.value = yellowSensor.toFixed(2);
 		blue.value = blueSensor.toFixed(2);
 		green.value = greenSensor.toFixed(2);
+		power.value = powerSensor.toFixed(2);
 
 		sensors = sensors;
 	};
