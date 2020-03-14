@@ -116,7 +116,7 @@
 
 	const getSensorData = async() => {
 		if (isDev) {
-			return {"redSensor":21.5625,"yellowSensor":21.4375,"blueSensor":21.3125,"greenSensor":21,"powerSensor": 1.3};
+			return {"redSensor":21.5625,"yellowSensor":21.4375,"blueSensor":21.3125,"greenSensor":21,"powerSensor":0.0453};
 		}
 
 		const response = await fetch('/sensors', {
@@ -153,7 +153,7 @@
 		yellow.value = yellowSensor.toFixed(2);
 		blue.value = blueSensor.toFixed(2);
 		green.value = greenSensor.toFixed(2);
-		power.value = powerSensor.toFixed(2);
+		power.value = powerSensor.toFixed(3);
 
 		sensors = sensors;
 	};
