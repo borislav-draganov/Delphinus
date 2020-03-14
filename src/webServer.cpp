@@ -7,7 +7,7 @@
 
 #include "config.h"
 #include "connection.h"
-#include "dallas.h"
+#include "sensors.h"
 
 AsyncWebServer server(80);
 
@@ -39,7 +39,7 @@ void RestWebServer::start() {
     server.on("/sensors", HTTP_GET, [](AsyncWebServerRequest *request) {
         Serial.println("GET /sensors");
 
-        StaticJsonDocument<128> doc = Dallas.getAllTemperaturesAsJson();
+        StaticJsonDocument<128> doc = Sensors.getAllSensorDataAsJSON();
 
         AsyncResponseStream *response = request->beginResponseStream("application/json");
         serializeJson(doc, *response);

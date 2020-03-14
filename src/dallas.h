@@ -11,9 +11,23 @@
 
 class DallasSensors {
     public:
+        static OneWire oneWireRedSensor;
+        static OneWire oneWireYellowSensor;
+        static OneWire oneWireBlueSensor;
+        static OneWire oneWireGreenSensor;
+
+        static DallasTemperature redSensor;
+        static DallasTemperature yellowSensor;
+        static DallasTemperature blueSensor;
+        static DallasTemperature greenSensor;
+
         StaticJsonDocument<128> getAllTemperaturesAsJson();
 
         float getTemperature(DallasTemperature sensor);
+        float getRedSensorTemperature();
+        float getYellowSensorTemperature();
+        float getBlueSensorTemperature();
+        float getGreenSensorTemperature();
 };
 
 extern DallasSensors Dallas;
