@@ -2,5 +2,6 @@
     "redSensorName": "Red",
     "yellowSensorName": "Yellow",
     "blueSensorName": "Blue",
-    "greenSensorName": "Green"
+    "greenSensorName": "Green",
+    "powerSensorName": "Power"
 }
