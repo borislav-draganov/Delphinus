@@ -9,7 +9,7 @@ class Configuration {
 
        void saveWifiConfig(String ssid, String password);
 
-       void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName);
+       void saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, String powerSensorName);
 
        String getSsid();
 

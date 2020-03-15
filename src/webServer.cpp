@@ -77,8 +77,9 @@ void RestWebServer::start() {
         String yellowSensorName = jsonObj["yellowSensorName"].as<String>();
         String blueSensorName = jsonObj["blueSensorName"].as<String>();
         String greenSensorName = jsonObj["greenSensorName"].as<String>();
+        String powerSensorName = jsonObj["powerSensorName"].as<String>();
 
-        Config.saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName);
+        Config.saveSensorConfig(redSensorName, yellowSensorName, blueSensorName, greenSensorName, powerSensorName);
 
         request->send(200, "application/json", "{\"status\" : \"ok\"}");
     });

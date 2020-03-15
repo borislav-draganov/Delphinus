@@ -40,12 +40,13 @@ void Configuration::saveWifiConfig(String ssid, String password) {
     saveJsonToConfigFile(wifiConfigFile, doc);
 }
 
-void Configuration::saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName) {
+void Configuration::saveSensorConfig(String redSensorName, String yellowSensorName, String blueSensorName, String greenSensorName, String powerSensorName) {
     StaticJsonDocument<128> doc;
     doc["redSensorName"] = redSensorName;
     doc["yellowSensorName"] = yellowSensorName;
     doc["blueSensorName"] = blueSensorName;
     doc["greenSensorName"] = greenSensorName;
+    doc["powerSensorName"] = powerSensorName;
 
     saveJsonToConfigFile(sensorConfigFile, doc);
 }
